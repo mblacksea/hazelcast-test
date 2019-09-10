@@ -1,9 +1,8 @@
 package com.mblacksea.hazelcasttest.base.response;
 
-import com.mblacksea.hazelcasttest.base.AbstractGenericType;
 import com.mblacksea.hazelcasttest.base.util.GeneralEnumDefination.OperationResultCodeType;
 
-public class OperationResult extends AbstractGenericType {
+public class OperationResult {
   protected OperationResultCodeType resultCode;
   protected String description;
 

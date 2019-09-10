@@ -1,6 +1,6 @@
 package com.mblacksea.hazelcasttest.config;
 
-import com.mblacksea.hazelcasttest.mapper.DozerMapperUtility;
+import com.mblacksea.hazelcasttest.mapper.DozzerMapperUtility;
 import org.dozer.Mapper;
 import org.dozer.spring.DozerBeanMapperFactoryBean;
 import org.springframework.context.annotation.Bean;
@@ -22,10 +22,10 @@ public class DozerConfig {
   }
 
   @Bean
-  public DozerMapperUtility dozerMapperUtility(Mapper mapper) {
-    DozerMapperUtility dozerMapperUtility = new DozerMapperUtility();
-    dozerMapperUtility.setMapper(mapper);
-    return dozerMapperUtility;
+  public DozzerMapperUtility dozerMapperUtility(Mapper mapper) {
+    DozzerMapperUtility dozzerMapperUtility = new DozzerMapperUtility();
+    dozzerMapperUtility.setMapper(mapper);
+    return dozzerMapperUtility;
   }
 
   @Bean
