@@ -5,7 +5,7 @@ import com.mblacksea.hazelcasttest.base.response.GenericResponse;
 import com.mblacksea.hazelcasttest.base.response.OperationResult;
 import com.mblacksea.hazelcasttest.base.util.GeneralEnumDefination.OperationResultCodeType;
 import com.mblacksea.hazelcasttest.entity.UserEntity;
-import com.mblacksea.hazelcasttest.mapper.DozzerMapperUtility;
+import com.mblacksea.hazelcasttest.mapper.DozerMapperUtility;
 import com.mblacksea.hazelcasttest.model.User;
 import com.mblacksea.hazelcasttest.repository.UserRepository;
 import com.mblacksea.hazelcasttest.response.UserResponse;
@@ -21,10 +21,14 @@ import java.util.List;
 @Service
 public class UserServiceImpl extends AbstractService implements IUserService {
 
+  private final UserRepository userRepository;
+  private final DozerMapperUtility dozerMapperUtility;
+
   @Autowired
-  private UserRepository userRepository;
-  @Autowired
-  private DozzerMapperUtility dozzerMapperUtility;
+  public UserServiceImpl(UserRepository userRepository, DozerMapperUtility dozerMapperUtility) {
+    this.userRepository = userRepository;
+    this.dozerMapperUtility = dozerMapperUtility;
+  }
 
   @Override
   @Transactional(readOnly = true, propagation = Propagation.REQUIRED)
@@ -32,8 +36,9 @@ public class UserServiceImpl extends AbstractService implements IUserService {
     final GenericResponse<UserResponse> genericResponse = new GenericResponse<>();
 
     final List<UserEntity> userEntities = userRepository.findAll();
-    final List<User> allUsers = this.dozzerMapperUtility.map(userEntities, User.class, "UserEntity_User");
-    if (CollectionUtils.isNotEmpty(allUsers)) {
+    final List<User> allUsers = this.dozerMapperUtility.map(userEntities, User.class, "UserEntity_User");
+
+    if (CollectionUtils.isEmpty(allUsers)) {
       UserResponse userResponse = new UserResponse();
       userResponse.setUsers(allUsers);
 
@@ -41,7 +46,6 @@ public class UserServiceImpl extends AbstractService implements IUserService {
       genericResponse.setOperationResult(OperationResult.newInstance(OperationResultCodeType.SUCCESS));
 
     }
-
     return genericResponse;
   }
 }

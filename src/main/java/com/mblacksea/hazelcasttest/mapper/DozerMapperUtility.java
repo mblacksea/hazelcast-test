@@ -5,7 +5,7 @@ import org.dozer.Mapper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DozzerMapperUtility {
+public class DozerMapperUtility {
   private Mapper mapper;
 
   public Mapper getMapper() {

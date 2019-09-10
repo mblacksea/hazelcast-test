@@ -21,4 +21,5 @@ public class HazelcastConfiguration {
                 .setEvictionPolicy(EvictionPolicy.LRU)
                 .setTimeToLiveSeconds(20));
   }
+
 }
