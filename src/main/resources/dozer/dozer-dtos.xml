@@ -1,0 +1,19 @@
+<mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://dozer.sourceforge.net"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <mapping map-id="UserEntity_User">
+        <class-a>com.mblacksea.hazelcasttest.entity.UserEntity</class-a>
+        <class-b>com.mblacksea.hazelcasttest.model.User</class-b>
+        <field>
+            <a>name</a>
+            <b>userName</b>
+        </field>
+        <field>
+            <a>surname</a>
+            <b>userSurname</b>
+        </field>
+    </mapping>
+
+</mappings>
+
